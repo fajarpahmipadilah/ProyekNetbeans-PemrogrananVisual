@@ -26,11 +26,11 @@ public class Model_Pemesanan {
         this.tgl_pesan = tgl_pesan;
     }
 
-    public String getTotal_pesan() {
+    public Long getTotal_pesan() {
         return total_pesan;
     }
 
-    public void setTotal_pesan(String total_pesan) {
+    public void setTotal_pesan(Long total_pesan) {
         this.total_pesan = total_pesan;
     }
 
@@ -52,9 +52,11 @@ public class Model_Pemesanan {
 
     private String no_pesan;
     private String tgl_pesan;
-    private String total_pesan;
+    private Long total_pesan;
     private Model_Suplier mod_suplier;
     private Model_Pengguna mod_pengguna;
+    
+
     
     
 }

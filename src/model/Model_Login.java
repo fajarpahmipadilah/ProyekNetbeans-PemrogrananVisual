@@ -9,16 +9,21 @@ package model;
  * @author Kulub Cau
  */
 public class Model_Login {
-     private String id_pengguna;
-     private String username;
-     private String password;
-     
+
     public String getId_pengguna() {
         return id_pengguna;
     }
 
     public void setId_pengguna(String id_pengguna) {
         this.id_pengguna = id_pengguna;
+    }
+
+    public String getNama_pengguna() {
+        return nama_pengguna;
+    }
+
+    public void setNama_pengguna(String nama_pengguna) {
+        this.nama_pengguna = nama_pengguna;
     }
 
     public String getUsername() {
@@ -36,6 +41,21 @@ public class Model_Login {
     public void setPassword(String password) {
         this.password = password;
     }
+     private String id_pengguna;
+     private String nama_pengguna;
+     private String username;
+     private String password;
+     private String level;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+     
+ 
 
 
     

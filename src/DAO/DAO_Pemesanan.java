@@ -31,7 +31,29 @@ public class DAO_Pemesanan implements Service_Pemesanan {
 
     @Override
     public void tambahData(Model_Pemesanan mod_pesan) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement st = null;
+       String sql = "INSERT INTO pemesanan (no_pesan, tgl_pesan, total_pesan, id_suplier, id_pengguna) VALUES (?,?,?,?,?)";
+       try{
+           st = conn.prepareStatement(sql);
+           st.setString(1, mod_pesan.getNo_pesan());
+           st.setString(2, mod_pesan.getTgl_pesan());
+           st.setLong(3, mod_pesan.getTotal_pesan());
+           st.setString(4, mod_pesan.getMod_suplier().getId_suplier());
+           st.setString(5, mod_pesan.getMod_pengguna().getId_pengguna());
+           
+           st.executeUpdate();
+          
+       }catch(SQLException ex){
+           Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+       }finally{
+           if(st!=null){
+               try{
+                   st.close();
+               }catch(SQLException ex){
+                   Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+               }
+           }
+       }
     }
 
     @Override
@@ -65,7 +87,7 @@ public class DAO_Pemesanan implements Service_Pemesanan {
                
                psn.setNo_pesan(rs.getString("no_pesan"));
                psn.setTgl_pesan(rs.getString("tgl_pesan"));
-               psn.setTotal_pesan(rs.getString("total_pesan"));
+               psn.setTotal_pesan(rs.getLong("total_pesan"));
                sup.setId_suplier(rs.getString("nama_suplier"));
                pgn.setId_pengguna(rs.getString("nama_pengguna"));
                

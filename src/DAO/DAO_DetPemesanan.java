@@ -30,7 +30,25 @@ public class DAO_DetPemesanan implements Service_DetPemesanan {
 
     @Override
     public void tambahData(Model_DetPemesanan mod_detpesan) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  PreparedStatement st = null;
+       String sql = "INSERT INTO detail_pemesanan (no_pesan,kode_barang,jml_pesan,subtotal_pesan,status) SELECT '"+mod_detpesan.getMod_pesan().getNo_pesan()+"', kode_barang,jml_pesan,subtotal_pesan,status FROM sementara_pesan";
+       try{
+           st = conn.prepareStatement(sql);
+          
+           
+           st.executeUpdate();
+          
+       }catch(SQLException ex){
+           Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+       }finally{
+           if(st!=null){
+               try{
+                   st.close();
+               }catch(SQLException ex){
+                   Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+               }
+           }
+       }
     }
 
     @Override
@@ -61,7 +79,23 @@ public class DAO_DetPemesanan implements Service_DetPemesanan {
 
     @Override
     public void hapusSementara(Model_DetPemesanan mod_detpesan) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    PreparedStatement st = null;
+        String sql = "DELETE FROM sementara_pesan ";
+        try{
+           st = conn.prepareStatement(sql);
+           
+           st.executeUpdate();
+        }catch(SQLException ex){
+            java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+        }finally{
+           if(st!=null){
+               try{
+                   st.close();
+               }catch(SQLException ex){
+                   java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE,null,ex);
+               }
+           }
+       }
     }
 
     @Override

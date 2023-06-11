@@ -46,7 +46,7 @@ public class DAO_Login implements Service_Login{
                 Nama = rs.getString("nama_pengguna");
                 Level2 = rs.getString("level");
                 
-                Menu_Utama menu =  new Menu_Utama (Id, Nama, Level2);
+                Menu_Utama menu =  new Menu_Utama (Nama, Level2);
                 menu.setVisible(true);
                 menu.revalidate();
                 
